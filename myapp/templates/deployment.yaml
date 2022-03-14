@@ -30,7 +30,8 @@ spec:
         - name: {{ .Chart.Name }}
           env:
           - name: MYSECRET
-            value: "<path:secret/data/shared/dev/testme-isnyder#foo>"
+            #value: "<path:secret/data/shared/dev/testme-isnyder#foo>"
+            value: "vault:secret/data/shared/dev/testme-isnyder#foo"
           #- name: MYSECRET
           #  valueFrom:
           #    secretKeyRef:
