@@ -30,10 +30,12 @@ spec:
         - name: {{ .Chart.Name }}
           env:
           - name: MYSECRET
-            valueFrom:
-              secretKeyRef:
-                name: {{ include "myapp.fullname" . }}-secret
-                key: MYSECRET
+            value: "<path:secret/data/shared/dev/testme-isnyder#foo>"
+          #- name: MYSECRET
+          #  valueFrom:
+          #    secretKeyRef:
+          #      name: {{ include "myapp.fullname" . }}-secret
+          #      key: MYSECRET
           command:
             - /bin/bash
             - -c
