@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: paas-examples-argocd-resources-runner
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  destination:
+    name: in-cluster
+    namespace: atlantis
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  source:
+    repoURL: https://github.com/irasnyd/argocd-helm-example.git
+    path: ./myapp
+    targetRevision: HEAD
+
+    helm:
+      values: |
+        nameOverride: isnyder-example-app
+        fullnameOverride: isnyder-example-app
+
