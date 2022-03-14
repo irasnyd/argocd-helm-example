@@ -10,12 +10,14 @@ spec:
       {{- include "myapp.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
-      annotations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
       labels:
         {{- include "myapp.selectorLabels" . | nindent 8 }}
+      annotations:
+        vault.security.banzaicloud.io/vault-addr: "https://vault.config:8200"
+        vault.security.banzaicloud.io/vault-tls-secret: "vault-tls"
+        vault.security.banzaicloud.io/vault-role: "admin"
+        vault.security.banzaicloud.io/vault-serviceaccount: "atlantis"
+        vault.security.banzaicloud.io/vault-path: "kubernetes"
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:

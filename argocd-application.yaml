@@ -19,11 +19,11 @@ spec:
     path: ./myapp
     targetRevision: HEAD
 
-  plugin:
-    name: dl-helm
-    env:
-    - name: HELM_VALUES_YAML
-      value: |
-        nameOverride: isnyder-example-app
-        fullnameOverride: isnyder-example-app
+    plugin:
+      name: dl-helm
+      env:
+      - name: HELM_VALUES_YAML
+        value: |
+          nameOverride: isnyder-example-app
+          fullnameOverride: isnyder-example-app
 
